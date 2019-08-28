@@ -1,29 +1,36 @@
-### Deploy Spring Boot application in Google Kubernetes Engine (GKE)
+## Deploy Spring Boot application in Google Kubernetes Engine (GKE)
 
 
 
 ## Steps to Deploying Spring Boot in Google Kubernetes Engine
 
+
 ## 1. Clone and Build and run application in local check everything is working
-	git clone https://github.com/Anandsingh1011/spring-rest-demo.git
+	git clone https://github.com/Anandsingh1011/spring-boot-kubernetes.git
 	java -jar spring-boot-example-0.0.1-SNAPSHOT.jar
+	
 	
 ## 2. GO to Google cloud console and open cloud shell. 
 
+
 ## 3. Checkout application from cloud shell. Build and run application in cloud check everything is working.
-	git clone https://github.com/Anandsingh1011/spring-rest-demo.git
+	git clone https://github.com/Anandsingh1011/spring-boot-kubernetes.git
 	java -jar spring-boot-example-0.0.1-SNAPSHOT.jar
+
 
 ## 4. Create a Kubernetes standard cluster of 3 nodes.Use Google cloud UI to create Kubernetes cluster.
 
-## 5. In cloud shell application root directory run this command.
-	./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/spring-rest-demo:v1
 
+## 5. In cloud shell application root directory run this command.
+	./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/spring-boot-kubernetes:v1
+
+	
 	
 ## 6. Login to Kubernetes cluster
 	gcloud auth login
 	gcloud config set project refined-magpie-232210
 	gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a
+	
 	
 ## 7. Check Kubernetes cluster status
 	kubectl get pods
@@ -31,11 +38,14 @@
 	kubectl get deployment
 	
 	
+	
 ## 8.	Before deploying image to Kubernetes cluster Run Docket Image locally and check its working or not.
-	docker run -ti --rm -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/spring-rest-demo:v1
+	docker run -ti --rm -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/spring-boot-kubernetes:v1
+	
 	
 ## 9. Deploy application to Kubernetes pod and it will be running
-	kubectl run spring-boot-rest --image=gcr.io/$GOOGLE_CLOUD_PROJECT/spring-rest-demo:v1 --port=8080
+	kubectl run spring-boot-rest --image=gcr.io/$GOOGLE_CLOUD_PROJECT/spring-boot-kubernetes:v1 --port=8080
+	
 	
 ## 10. Check status of deployment
 
