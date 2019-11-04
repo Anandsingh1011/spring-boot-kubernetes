@@ -1,7 +1,5 @@
 ## Deploy Spring Boot application in Google Kubernetes Engine (GKE)
 
-
-
 ## Steps to Deploying Spring Boot in Google Kubernetes Engine
 
 
@@ -28,8 +26,8 @@
 	
 ## 6. Login to Kubernetes cluster
 	gcloud auth login
-	gcloud config set project refined-magpie-232210
-	gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a
+	gcloud config set project <PROJECT_NAME>
+	gcloud container clusters get-credentials <CLUSTER_NAME> --zone <ZONE_NAME> 
 	
 	
 ## 7. Check Kubernetes cluster status
